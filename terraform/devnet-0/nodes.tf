@@ -2,9 +2,10 @@
 variable "bootnode" {
   default = {
     name            = "bootnode"
-    count           = 0
+    count           = 1
     validator_start = 0
     validator_end   = 0
+    location        = "fra1"
   }
 }
 
@@ -12,9 +13,9 @@ variable "bootnode" {
 variable "lighthouse_geth" {
   default = {
     name            = "lighthouse-geth"
-    count           = 0
+    count           = 4
     validator_start = 0
-    validator_end   = 100
+    validator_end   = 600
   }
 }
 
@@ -250,7 +251,7 @@ variable "teku_besu" {
 variable "teku_nethermind" {
   default = {
     name            = "teku-nethermind"
-    count           = 1
+    count           = 0
     validator_start = 0
     validator_end   = 0
   }

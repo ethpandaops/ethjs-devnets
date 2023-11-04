@@ -3,23 +3,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 variable "digitalocean_project_name" {
   type    = string
-  default = "ProjectName"
+  default = "EthJS Testnets"
 }
 
 variable "digitalocean_ssh_key_name" {
   type    = string
-  default = "examplekey"
+  default = "pk910"
 }
 
 variable "digitalocean_regions" {
   default = [
     "nyc1",
-    "sgp1",
-    "lon1",
-    "nyc3",
-    "ams3",
     "fra1",
-    "tor1",
     "blr1",
     "sfo3",
     "syd1"
@@ -50,7 +45,7 @@ locals {
         vms = {
           "${i + 1}" = {
             tags   = "group_name:${vm_group.name},val_start:${vm_group.validator_start + (i * (vm_group.validator_end - vm_group.validator_start) / vm_group.count)},val_end:${min(vm_group.validator_start + ((i + 1) * (vm_group.validator_end - vm_group.validator_start) / vm_group.count), vm_group.validator_end)}"
-            region = element(var.digitalocean_regions, i % length(var.digitalocean_regions))
+            region = try(vm_group.location, element(var.digitalocean_regions, i % length(var.digitalocean_regions)))
             size   = try(vm_group.size, local.digitalocean_default_size)
           }
         }
@@ -61,7 +56,7 @@ locals {
 
 locals {
   digitalocean_default_region = "ams3"
-  digitalocean_default_size   = "c-2"
+  digitalocean_default_size   = "s-2vcpu-2gb-90gb-intel"
   digitalocean_default_image  = "debian-12-x64"
   digitalocean_global_tags = [
     "Owner:Devops",
@@ -261,6 +256,24 @@ resource "cloudflare_record" "server_record_beacon" {
   name    = "bn.${each.value.name}.srv.${var.ethereum_network}"
   type    = "A"
   value   = digitalocean_droplet.main[each.value.id].ipv4_address
+  proxied = false
+  ttl     = 120
+}
+
+resource "cloudflare_record" "homepage_cloudflare_record" {
+  zone_id = data.cloudflare_zone.default.id
+  name    = "${var.ethereum_network}"
+  type    = "A"
+  value   = digitalocean_droplet.main["bootnode-1"].ipv4_address
+  proxied = false
+  ttl     = 120
+}
+
+resource "cloudflare_record" "tooling_cloudflare_record" {
+  zone_id = data.cloudflare_zone.default.id
+  name    = "*.${var.ethereum_network}"
+  type    = "A"
+  value   = digitalocean_droplet.main["bootnode-1"].ipv4_address
   proxied = false
   ttl     = 120
 }
