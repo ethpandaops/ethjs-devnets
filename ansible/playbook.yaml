@@ -84,6 +84,12 @@
     - role: ethpandaops.general.dora
       tags: [dora]
 
+- hosts: blockscout
+  become: true
+  roles:
+    - role: ethpandaops.general.blockscout
+      tags: [blockscout]
+
 - hosts: localhost
   roles:
     - role: ethpandaops.general.ethereum_post_network_setup
