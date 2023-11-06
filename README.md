@@ -34,4 +34,6 @@ Here's a table of where the keys are used
 
 | Account Index | Component Used In | Private Key Used | Public Key Used | Comment                           |
 |---------------|-------------------|------------------|-----------------|-----------------------------------|
-| 0-15          | available         |                  |                 |                                   |
+| 0             | goomy-txspam1     | yes              |                 |                                   |
+| 1             | goomy-txspam2     | yes              |                 |                                   |
+| 2-15          | available         |                  |                 |                                   |
