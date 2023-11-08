@@ -90,33 +90,6 @@
     - role: ethpandaops.general.blockscout
       tags: [blockscout]
 
-- hosts: goomy_txspam1
-  become: true
-  roles:
-    - role: ethpandaops.general.goomy
-      tags: [goomy, txspam1]
-
-- hosts: goomy_txspam2
-  become: true
-  tags: [goomy, txspam2]
-  tasks:
-    - name: Create directories
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: directory
-        mode: "0750"
-        owner: "{{ goomy_user }}"
-        group: "{{ goomy_user }}"
-      loop:
-        - "{{ goomy_datadir }}"
-    - name: Write bytecodes file
-      ansible.builtin.copy:
-        dest: "{{ goomy_datadir }}/bytecodes.txt"
-        content: "{{ goomy_deploy_bytecodes | join('\n') }}"
-    - name: Goomy roles
-      include_role:
-        name: ethpandaops.general.goomy
-
 - hosts: localhost
   roles:
     - role: ethpandaops.general.ethereum_post_network_setup
