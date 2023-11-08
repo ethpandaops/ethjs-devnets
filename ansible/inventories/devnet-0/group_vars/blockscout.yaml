@@ -4,6 +4,7 @@ blockscout_container_env:
   # For all env variables, check https://docs.blockscout.com/for-developers/information-and-settings/env-variables
   ETHEREUM_JSONRPC_VARIANT: geth
   ETHEREUM_JSONRPC_HTTP_URL: http://execution:8545/
+  ETHEREUM_JSONRPC_TRACE_URL: http://execution:8545/
   MIX_ENV: prod
   PORT: '4000'
   DATABASE_URL: postgresql://postgres:postgres@blockscout-database:5432/blockscout?ssl=false
