@@ -1,0 +1,13 @@
+
+# role: ethpandaops.general.dugtrio
+dugtrio_hostname: "beacon.{{ ethereum_network_name }}.ethpandaops.io"
+dugtrio_container_image: ethpandaops/dugtrio:1.0.0
+dugtrio_frontend_title: "Dugtrio: {{ ethereum_network_name }}"
+dugtrio_endpoints:
+  - name: "bootnode"
+    url: "http://beacon:5052"
+
+dugtrio_container_env:
+  VIRTUAL_HOST: "{{ dugtrio_hostname }}"
+  VIRTUAL_PORT: "8080"
+  LETSENCRYPT_HOST: "{{ dugtrio_hostname }}"
