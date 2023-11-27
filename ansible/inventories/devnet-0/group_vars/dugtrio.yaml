@@ -2,6 +2,8 @@
 # role: ethpandaops.general.dugtrio
 dugtrio_hostname: "beacon.{{ ethereum_network_name }}.ethpandaops.io"
 dugtrio_container_image: ethpandaops/dugtrio:1.0.0
+dugtrio_container_ports:
+  - "8081:8080"
 dugtrio_frontend_title: "Dugtrio: {{ ethereum_network_name }}"
 dugtrio_endpoints:
   - name: "bootnode"
