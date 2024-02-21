@@ -56,7 +56,7 @@ locals {
 
 locals {
   digitalocean_default_region = "ams3"
-  digitalocean_default_size   = "s-2vcpu-2gb-90gb-intel"
+  digitalocean_default_size   = "s-2vcpu-4gb-120gb-intel"
   digitalocean_default_image  = "debian-12-x64"
   digitalocean_global_tags = [
     "Owner:Devops",
