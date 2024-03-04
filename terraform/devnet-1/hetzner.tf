@@ -231,7 +231,7 @@ resource "cloudflare_record" "server_record_beacon6" {
 
 resource "cloudflare_record" "homepage_cloudflare_record" {
   zone_id = data.cloudflare_zone.default.id
-  name    = "${var.ethereum_network}"
+  name    = var.ethereum_network
   type    = "A"
   value   = hcloud_server.main["bootnode-1"].ipv4_address
   proxied = false
@@ -249,7 +249,7 @@ resource "cloudflare_record" "tooling_cloudflare_record" {
 
 resource "cloudflare_record" "homepage_cloudflare_record6" {
   zone_id = data.cloudflare_zone.default.id
-  name    = "${var.ethereum_network}"
+  name    = var.ethereum_network
   type    = "AAAA"
   value   = hcloud_server.main["bootnode-1"].ipv6_address
   proxied = false
