@@ -14,7 +14,8 @@ This repository contains the infrastructure code used to setup ~all~ dev/testnet
 
 Status   | Network    | Links   | Ansible                                                      | Terraform | Kubernetes
 ------   | --------   | ----     |  -----                                                       | -------   | ------
- 🟢 Active | [devnet-0](https://dora.ethjs-devnet-0.ethpandaops.io/)   | [Network config](network-configs/devnet-0) / [Inventory](https://bootnode-1.srv.ethjs-devnet-0.ethpandaops.io/meta/api/v1/inventory.json) / [Validator ranges](https://bootnode-1.srv.ethjs-devnet-0.ethpandaops.io/meta/api/v1/validator-ranges.json)    | [🔗](ansible/inventories/devnet-0) | [🔗](terraform/devnet-0)
+ 🔴 Off | [devnet-0](https://dora.ethjs-devnet-0.ethpandaops.io/)   | [Network config](network-configs/devnet-0) / [Inventory](https://bootnode-1.srv.ethjs-devnet-0.ethpandaops.io/meta/api/v1/inventory.json) / [Validator ranges](https://bootnode-1.srv.ethjs-devnet-0.ethpandaops.io/meta/api/v1/validator-ranges.json)    | [🔗](ansible/inventories/devnet-0) | [🔗](terraform/devnet-0)
+ 🟢 Active | [devnet-1](https://dora.ethjs-devnet-1.ethpandaops.io/)   | [Network config](network-configs/devnet-1) / [Inventory](https://bootnode-1.ethjs-devnet-1.ethpandaops.io/meta/api/v1/inventory.json) / [Validator ranges](https://bootnode-1.ethjs-devnet-1.ethpandaops.io/meta/api/v1/validator-ranges.json)    | [🔗](ansible/inventories/devnet-1) | [🔗](terraform/devnet-1)
 
 # Development
 ## Version management for tools

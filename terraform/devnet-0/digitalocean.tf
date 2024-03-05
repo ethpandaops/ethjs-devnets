@@ -262,7 +262,7 @@ resource "cloudflare_record" "server_record_beacon" {
 
 resource "cloudflare_record" "homepage_cloudflare_record" {
   zone_id = data.cloudflare_zone.default.id
-  name    = "${var.ethereum_network}"
+  name    = var.ethereum_network
   type    = "A"
   value   = digitalocean_droplet.main["bootnode-1"].ipv4_address
   proxied = false
