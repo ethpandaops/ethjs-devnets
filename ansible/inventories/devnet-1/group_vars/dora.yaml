@@ -11,7 +11,12 @@ dora_chain_name: ""
 dora_chain_config: "/testnet/config.yaml"
 dora_chain_displayname: "{{ ethereum_network_name }}"
 dora_frontend_subtitle: "{{ ethereum_network_name }}"
-dora_beaconapi_endpoint: "http://beacon:5052"
+dora_beaconapi_endpoints:
+  - name: "bootnode"
+    url: "http://beacon:5052"
+dora_executionapi_endpoints:
+  - name: "bootnode"
+    url: "http://execution:8545"
 dora_frontend_validatornames_inventory: "https://bootnode-1.{{ ethereum_network_name }}.ethpandaops.io/meta/api/v1/validator-ranges.json"
 dora_container_env:
   VIRTUAL_HOST: "{{ dora_hostname }}"
